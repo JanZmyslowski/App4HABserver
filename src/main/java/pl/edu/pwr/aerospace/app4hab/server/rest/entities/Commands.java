@@ -1,4 +1,4 @@
-package pl.edu.pwr.aerospace.app4hab.server.rest.responses;
+package pl.edu.pwr.aerospace.app4hab.server.rest.entities;
 
 public class Commands {
     private boolean logging;

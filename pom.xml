@@ -104,6 +104,7 @@
 				<version>2.1</version>
 				<configuration>
 					<url>http://pwraerospace.pl:8080/manager/text</url>
+                    <path>/app4hab</path>
 				</configuration>
 			</plugin>
 
