@@ -24,21 +24,8 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-            <!-- Jadler - rest service mock -->
-			<groupId>net.jadler</groupId>
-			<artifactId>jadler-all</artifactId>
-			<version>1.3.0</version>
-			<scope>test</scope>
-		</dependency>
 
-		<!-- Cache -->
-		<dependency>
-			<!-- In memory database -->
-			<groupId>org.hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<version>2.4.0</version>
-		</dependency>
+		<!-- DB -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -85,18 +72,6 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<!-- Deploy war to local server, use goal 'jetty:start' to run -->
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>9.4.5.v20170502</version>
-				<configuration>
-					<stopPort>9966</stopPort>
-					<stopKey>foo</stopKey>
-					<stopWait>10</stopWait>
-				</configuration>
-			</plugin>
-
 			<plugin>
 				<!-- Deploy war to remote tomcat server, use goal 'tomcat7:redeploy' -->
 				<groupId>org.apache.tomcat.maven</groupId>
