@@ -1,12 +1,29 @@
 package pl.edu.pwr.aerospace.app4hab.server.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Image {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private int ID;
     private String img;
     private String timestamp;
     private int count;
     private float longitude;
     private float latitude;
     private float altitude;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
     public String getImg() {
         return img;

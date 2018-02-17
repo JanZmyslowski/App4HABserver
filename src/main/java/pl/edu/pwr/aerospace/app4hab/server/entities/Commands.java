@@ -1,10 +1,28 @@
 package pl.edu.pwr.aerospace.app4hab.server.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Commands {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private int ID;
     private boolean logging;
     private boolean camera;
     private boolean radio;
     private boolean sendPicture;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
     public boolean isLogging() {
         return logging;
@@ -37,6 +55,4 @@ public class Commands {
     public void setSendPicture(boolean sendPicture) {
         this.sendPicture = sendPicture;
     }
-
-
 }
