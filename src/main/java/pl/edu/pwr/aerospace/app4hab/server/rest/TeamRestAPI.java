@@ -1,7 +1,7 @@
 package pl.edu.pwr.aerospace.app4hab.server.rest;
 
 import org.apache.log4j.Logger;
-import pl.edu.pwr.aerospace.app4hab.server.rest.entities.Activity;
+import pl.edu.pwr.aerospace.app4hab.server.rest.entities.PhoneActivity;
 import pl.edu.pwr.aerospace.app4hab.server.rest.entities.Commands;
 import pl.edu.pwr.aerospace.app4hab.server.rest.entities.Image;
 import pl.edu.pwr.aerospace.app4hab.server.rest.entities.SensorStatus;
@@ -29,10 +29,10 @@ public class TeamRestAPI {
     @GET
     @Path("/lastactivity")
     @Produces(MediaType.APPLICATION_JSON)
-    public Activity getLastActivity() {
+    public PhoneActivity getLastActivity() {
         LOG.info("Incoming request for last activity");
 
-        Activity res = new Activity("", "");
+        PhoneActivity res = new PhoneActivity("", "");
 
         return res;
     }
@@ -40,7 +40,7 @@ public class TeamRestAPI {
     @GET
     @Path("/allactivities")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Activity> getAllActivities() {
+    public List<PhoneActivity> getAllActivities() {
         LOG.info("Incoming request for all activities");
 
         return new ArrayList<>();
