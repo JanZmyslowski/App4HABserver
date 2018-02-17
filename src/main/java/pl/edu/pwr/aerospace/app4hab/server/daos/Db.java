@@ -1,13 +1,13 @@
-package pl.edu.pwr.aerospace.app4hab.server.db;
+package pl.edu.pwr.aerospace.app4hab.server.daos;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class Db {
+class Db {
     private static SessionFactory sessionFactory;
 
-    public static Session getSession(){
+    static Session getSession(){
         if (sessionFactory == null) initSessionFactory();
 
         return sessionFactory.openSession();
@@ -23,11 +23,7 @@ public class Db {
     }
 
 
-//        Session s = sessionFactory.openSession();
-//        s.beginTransaction();
-//        s.save(a);
-//        s.getTransaction().commit();
-//        s.close();
+
 //
 //
 //        s = sessionFactory.openSession();

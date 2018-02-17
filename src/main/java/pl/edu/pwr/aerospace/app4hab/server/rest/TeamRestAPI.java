@@ -1,10 +1,10 @@
 package pl.edu.pwr.aerospace.app4hab.server.rest;
 
 import org.apache.log4j.Logger;
-import pl.edu.pwr.aerospace.app4hab.server.rest.entities.PhoneActivity;
-import pl.edu.pwr.aerospace.app4hab.server.rest.entities.Commands;
-import pl.edu.pwr.aerospace.app4hab.server.rest.entities.Image;
-import pl.edu.pwr.aerospace.app4hab.server.rest.entities.SensorStatus;
+import pl.edu.pwr.aerospace.app4hab.server.entities.PhoneActivity;
+import pl.edu.pwr.aerospace.app4hab.server.entities.Commands;
+import pl.edu.pwr.aerospace.app4hab.server.entities.Image;
+import pl.edu.pwr.aerospace.app4hab.server.entities.SensorStatus;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

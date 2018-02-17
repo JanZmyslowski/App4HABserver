@@ -6,12 +6,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.apache.log4j.Logger;
-import pl.edu.pwr.aerospace.app4hab.server.db.Db;
-import pl.edu.pwr.aerospace.app4hab.server.rest.entities.PhoneActivity;
-import pl.edu.pwr.aerospace.app4hab.server.rest.entities.Commands;
-import pl.edu.pwr.aerospace.app4hab.server.rest.entities.SensorStatus;
-
-import java.util.List;
+import pl.edu.pwr.aerospace.app4hab.server.entities.Commands;
+import pl.edu.pwr.aerospace.app4hab.server.entities.SensorStatus;
 
 @Path("/api")
 // @Singleton

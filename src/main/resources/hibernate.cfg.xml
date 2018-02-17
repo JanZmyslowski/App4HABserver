@@ -23,6 +23,9 @@
 
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="pl.edu.pwr.aerospace.app4hab.server.rest.entities.PhoneActivity" />
+        <mapping class="pl.edu.pwr.aerospace.app4hab.server.entities.Commands" />
+        <mapping class="pl.edu.pwr.aerospace.app4hab.server.entities.Image" />
+        <mapping class="pl.edu.pwr.aerospace.app4hab.server.entities.PhoneActivity" />
+        <mapping class="pl.edu.pwr.aerospace.app4hab.server.entities.SensorStatus" />
     </session-factory>
 </hibernate-configuration>

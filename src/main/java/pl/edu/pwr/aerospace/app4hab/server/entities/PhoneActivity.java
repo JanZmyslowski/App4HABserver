@@ -1,4 +1,4 @@
-package pl.edu.pwr.aerospace.app4hab.server.rest.entities;
+package pl.edu.pwr.aerospace.app4hab.server.entities;
 
 import javax.persistence.*;
 import java.util.Date;
