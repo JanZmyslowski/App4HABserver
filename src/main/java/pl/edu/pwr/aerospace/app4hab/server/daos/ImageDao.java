@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ImageDao extends Dao {
 
-    public Image getPhoto(int ID){
+    public Image getImage(int ID){
         return null;
     }
 

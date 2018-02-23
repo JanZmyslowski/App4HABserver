@@ -9,6 +9,5 @@ public abstract class Dao {
         s.beginTransaction();
         s.save(o);
         s.getTransaction().commit();
-        s.close();
     }
 }

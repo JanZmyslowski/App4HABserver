@@ -1,6 +1,10 @@
 package pl.edu.pwr.aerospace.app4hab.server.rest;
 
 import org.apache.log4j.Logger;
+import pl.edu.pwr.aerospace.app4hab.server.daos.CommandsDao;
+import pl.edu.pwr.aerospace.app4hab.server.daos.ImageDao;
+import pl.edu.pwr.aerospace.app4hab.server.daos.PhoneActivityDao;
+import pl.edu.pwr.aerospace.app4hab.server.daos.SensorStatusDao;
 import pl.edu.pwr.aerospace.app4hab.server.entities.PhoneActivity;
 import pl.edu.pwr.aerospace.app4hab.server.entities.Commands;
 import pl.edu.pwr.aerospace.app4hab.server.entities.Image;
@@ -9,7 +13,6 @@ import pl.edu.pwr.aerospace.app4hab.server.entities.SensorStatus;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 import java.util.List;
 
 @Path("/control")
@@ -22,6 +25,8 @@ public class TeamRestAPI {
     public Response updateCommands(Commands c) {
         LOG.info("Incoming request for updating commands");
 
+        CommandsDao dao = new CommandsDao();
+        dao.save(c);
 
         return Response.status(200).build();
     }
@@ -32,9 +37,8 @@ public class TeamRestAPI {
     public PhoneActivity getLastActivity() {
         LOG.info("Incoming request for last activity");
 
-        PhoneActivity res = new PhoneActivity("", "");
-
-        return res;
+        PhoneActivityDao dao = new PhoneActivityDao();
+        return dao.getLastActivity();
     }
 
     @GET
@@ -43,7 +47,8 @@ public class TeamRestAPI {
     public List<PhoneActivity> getAllActivities() {
         LOG.info("Incoming request for all activities");
 
-        return new ArrayList<>();
+        PhoneActivityDao dao = new PhoneActivityDao();
+        return dao.getAllActivities();
     }
 
     @GET
@@ -52,7 +57,8 @@ public class TeamRestAPI {
     public List<SensorStatus> getAllStatuses() {
         LOG.info("Incoming request for all statuses");
 
-        return new ArrayList<>();
+        SensorStatusDao dao = new SensorStatusDao();
+        return dao.getAllStatuses();
     }
 
     @GET
@@ -61,7 +67,8 @@ public class TeamRestAPI {
     public SensorStatus getStatus(@PathParam("id") int id) {
         LOG.info("Incoming request for status with id " + id);
 
-        return new SensorStatus();
+        SensorStatusDao dao = new SensorStatusDao();
+        return dao.getStatus(id);
     }
 
     @GET
@@ -70,7 +77,8 @@ public class TeamRestAPI {
     public List<Image> getAllPhotos() {
         LOG.info("Incoming request for all photos");
 
-        return new ArrayList<>();
+        ImageDao dao = new ImageDao();
+        return dao.getAllImages();
     }
 
     @GET
@@ -79,6 +87,7 @@ public class TeamRestAPI {
     public Image getPhoto(@PathParam("id") int id) {
         LOG.info("Incoming request for Photo with id " + id);
 
-        return new Image();
+        ImageDao dao = new ImageDao();
+        return dao.getImage(id);
     }
 }
