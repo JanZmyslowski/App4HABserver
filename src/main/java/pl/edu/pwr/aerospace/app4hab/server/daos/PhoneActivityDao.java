@@ -1,5 +1,6 @@
 package pl.edu.pwr.aerospace.app4hab.server.daos;
 
+import com.sun.jersey.api.NotFoundException;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -14,8 +15,13 @@ public class PhoneActivityDao extends Dao {
         Session s = Db.getSession();
         Transaction tx = s.beginTransaction();
         Criteria c = s.createCriteria(PhoneActivity.class);
-        c.addOrder(Order.desc("ID"));
-        return (PhoneActivity)c.list().get(0);
+        c.addOrder(Order.desc("timestamp"));
+
+        try {
+            return (PhoneActivity)c.list().get(0);
+        }catch (IndexOutOfBoundsException e){
+            throw new NotFoundException();
+        }
     }
 
     public List<PhoneActivity> getAllActivities(){
