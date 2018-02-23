@@ -1,5 +1,6 @@
 package pl.edu.pwr.aerospace.app4hab.server.rest;
 
+import com.sun.jersey.api.view.Viewable;
 import org.apache.log4j.Logger;
 import pl.edu.pwr.aerospace.app4hab.server.daos.CommandsDao;
 import pl.edu.pwr.aerospace.app4hab.server.daos.ImageDao;
@@ -89,5 +90,12 @@ public class TeamRestAPI {
 
         ImageDao dao = new ImageDao();
         return dao.getImage(id);
+    }
+
+
+    @GET
+    @Path("/gui")
+    public Viewable showGui(){
+        return new Viewable("/gui.html");
     }
 }

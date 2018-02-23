@@ -18,7 +18,7 @@ import pl.edu.pwr.aerospace.app4hab.server.entities.SensorStatus;
 
 import java.io.IOException;
 
-@Path("/api")
+@Path("/")
 public class PhoneRestAPI {
     private static final Logger LOG = Logger.getLogger(PhoneRestAPI.class);
 
