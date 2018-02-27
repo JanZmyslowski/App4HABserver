@@ -23,7 +23,7 @@
 
 	<filter-mapping>
 		<filter-name>jersey</filter-name>
-		<url-pattern>/api</url-pattern>
+		<url-pattern>/api/*</url-pattern>
 	</filter-mapping>
 
     <listener>

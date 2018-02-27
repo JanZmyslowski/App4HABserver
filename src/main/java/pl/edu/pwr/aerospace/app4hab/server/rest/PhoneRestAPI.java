@@ -18,7 +18,7 @@ import pl.edu.pwr.aerospace.app4hab.server.entities.SensorStatus;
 
 import java.io.IOException;
 
-@Path("/")
+@Path("api/")
 public class PhoneRestAPI {
     private static final Logger LOG = Logger.getLogger(PhoneRestAPI.class);
 
@@ -76,6 +76,14 @@ public class PhoneRestAPI {
     public String test() {
         LOG.info("Incoming test request");
         return "Server runs";
+    }
+
+    @GET
+    @Path("/")
+    @Produces(MediaType.TEXT_HTML)
+    public String def() {
+        LOG.info("Incoming default request");
+        return "Default";
     }
 
 

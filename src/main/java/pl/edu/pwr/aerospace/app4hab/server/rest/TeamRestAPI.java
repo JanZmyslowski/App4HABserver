@@ -1,6 +1,5 @@
 package pl.edu.pwr.aerospace.app4hab.server.rest;
 
-import com.sun.jersey.api.view.Viewable;
 import org.apache.log4j.Logger;
 import pl.edu.pwr.aerospace.app4hab.server.daos.CommandsDao;
 import pl.edu.pwr.aerospace.app4hab.server.daos.ImageDao;
@@ -16,9 +15,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Path("/control")
+@Path("api/control")
 public class TeamRestAPI {
     private static final Logger LOG = Logger.getLogger(TeamRestAPI.class);
+
+    public TeamRestAPI() {
+        LOG.info("Initializing TeamRestAPI");
+    }
 
     @POST
     @Path("/commands")
@@ -92,10 +95,11 @@ public class TeamRestAPI {
         return dao.getImage(id);
     }
 
-
     @GET
-    @Path("/gui")
-    public Viewable showGui(){
-        return new Viewable("/gui.html");
+    @Path("/")
+    @Produces(MediaType.TEXT_HTML)
+    public String def() {
+        LOG.info("Incoming default request");
+        return "Default";
     }
 }
