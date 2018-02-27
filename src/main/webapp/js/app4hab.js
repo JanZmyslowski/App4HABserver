@@ -12,18 +12,19 @@ function sendTestAjax() {
 
 function initPage(){
     console.log("initPage");
+    clickTabActivities();
+    updateLastActivity();
+}
+
+function update(){
     updateLastActivity();
 }
 
 
 function updateLastActivity(){
-    console.log("Last activity") 
-    
     $.ajax({
       url: "/app4hab/api/control/lastactivity",
       success: function(result){
-          console.log("Last activity result:")
-          console.log(result);
           
           var date = unixToReadableDate(result["timestamp"]);
           var ago = calculateTimeAgo(result["timestamp"]);
@@ -62,4 +63,113 @@ function calculateTimeAgo(unixTime){
     if (seconds != 0) res += seconds + "s "
 
     return res;
+}
+
+function clickTabActivities(){
+    loadActivities();
+    
+    $("#TabActivities").addClass("active");
+    $("#TabSensors").removeClass("active");
+    $("#TabPhotos").removeClass("active");
+    
+}
+
+function clickTabSensors(){
+    loadSensors();
+    
+    $("#TabActivities").removeClass("active");
+    $("#TabSensors").addClass("active");
+    $("#TabPhotos").removeClass("active");
+    
+}
+
+function clickTabPhotos(){
+    loadPhotos();
+    
+    $("#TabActivities").removeClass("active");
+    $("#TabSensors").removeClass("active");
+    $("#TabPhotos").addClass("active");
+    
+}
+
+function loadActivities(){
+    clearLeftPane();
+    
+    $.ajax({
+      url: "/app4hab/api/control/allactivities",
+      success: function(result){
+          jQuery.each(result, function(i, item){
+              $("#TabTable").find('tbody')
+                .append($('<tr>')
+                    .addClass("text-info")
+                    .append($('<td>').text(item["id"]))
+                    .append($('<td>').text(unixToReadableDate(item["timestamp"])))
+                    .append($('<td>').text(item["endpoint"]))
+                    .click(function(){
+                        showActivityDetails(item["id"]);
+                        $("html, body").animate({ scrollTop: 0 }, "slow");
+                    })
+                )
+          })
+      }
+    });
+    
+    $("#TabTable").find('thead')
+        .append($('<tr>')
+            .append($('<th>').text("ID"))
+            .append($('<th>').text("Time"))
+            .append($('<th>').text("Endpoint"))
+        )
+}
+
+function showActivityDetails(id){
+    $("#SelectionHeadline").text("Activity: " + id);
+    $("#CodeArea").text("...");
+    
+    $.ajax({
+      url: "/app4hab/api/control/activity/" + id,
+      success: function(result){
+          console.log(result);
+          $("#CodeArea").html(syntaxHighlight(result));
+      }
+    });
+}
+
+function loadSensors(){
+    clearLeftPane();
+}
+
+function loadPhotos(){
+    clearLeftPane();
+}
+
+function clearLeftPane(){
+    $("#TabTable").find('thead').empty();
+    $("#TabTable").find('tbody').empty();
+}
+
+
+
+
+//Stolen from https://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript
+function syntaxHighlight(json) {
+    if (typeof json != 'string') {
+         json = JSON.stringify(json, undefined, 2);
+    }
+    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                cls = 'key';
+            } else {
+                cls = 'string';
+            }
+        } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+        } else if (/null/.test(match)) {
+            cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+    });
 }

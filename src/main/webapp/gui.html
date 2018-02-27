@@ -11,8 +11,19 @@
     <script src="js/app4hab.js"></script>
     
     <script>
-        $(document).ready(initPage());    
+        $(window).ready(initPage);
+
+        window.setInterval(update, 1000);
     </script>
+    
+    <style>
+    pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+    .string { color: green; }
+    .number { color: darkorange; }
+    .boolean { color: blue; }
+    .null { color: magenta; }
+    .key { color: red; }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
@@ -33,9 +44,29 @@
       <div class="row">
         <nav class="col-md-3 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
-            
-Tutaj będą trzy taby ze statusem, zdjęciami i aktywnością fona
-            
+            <br/>
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="TabActivities" onclick="clickTabActivities()">Activities</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="TabSensors" onclick="clickTabSensors()">Sensors</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="TabPhotos" onclick="clickTabPhotos()">Photos</a>
+              </li>
+            </ul>
+              
+            <div class="table-responsive">
+              <table class="table" id="TabTable">
+                <thead>
+                </thead>
+                  
+                <tbody>  
+                </tbody>
+              </table>
+            </div>
+              
           </div>
         </nav>
 
@@ -44,7 +75,10 @@ Tutaj będą trzy taby ze statusem, zdjęciami i aktywnością fona
             <h1 class="h2">Dashboard</h1>
           </div>
 
-          <h2 id="SelectionHeadline">Selection headline</h2>
+          <h4 id="SelectionHeadline">Nothing selected</h4>
+          <pre id="CodeArea">
+            
+          </pre>
         </main>
       </div>
     </div>

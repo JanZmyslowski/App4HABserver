@@ -56,6 +56,16 @@ public class TeamRestAPI {
     }
 
     @GET
+    @Path("/activity/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public PhoneActivity getActivity(@PathParam("id") int id) {
+        LOG.info("Incoming request for activity with id " + id);
+
+        PhoneActivityDao dao = new PhoneActivityDao();
+        return dao.getActivity(id);
+    }
+
+    @GET
     @Path("/statuses")
     @Produces(MediaType.APPLICATION_JSON)
     public List<SensorStatus> getAllStatuses() {
