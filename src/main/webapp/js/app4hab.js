@@ -23,14 +23,17 @@ function update(){
 
 function updateLastActivity(){
     $.ajax({
-      url: "/app4hab/api/control/lastactivity",
-      success: function(result){
+        url: "/app4hab/api/control/lastactivity",
+        success: function(result){
           
-          var date = unixToReadableDate(result["timestamp"]);
-          var ago = calculateTimeAgo(result["timestamp"]);
-          $('#LastActivityTime').text(date);
-          $('#LastActivityAgo').text(ago);
-      }
+            var date = unixToReadableDate(result["timestamp"]);
+            var ago = calculateTimeAgo(result["timestamp"]);
+            if($('#LastActivityTime').text() != date){
+                loadActivities();
+                $('#LastActivityTime').text(date);
+            }
+            $('#LastActivityAgo').text(ago);
+        }
     });
 }
 

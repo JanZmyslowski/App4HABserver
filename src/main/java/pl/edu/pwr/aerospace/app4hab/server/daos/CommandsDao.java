@@ -1,6 +1,5 @@
 package pl.edu.pwr.aerospace.app4hab.server.daos;
 
-import com.sun.jersey.api.NotFoundException;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -18,7 +17,7 @@ public class CommandsDao extends Dao {
         try {
             return (Commands)c.list().get(0);
         }catch (IndexOutOfBoundsException e){
-            throw new NotFoundException();
+            return new Commands();
         }
     }
 }

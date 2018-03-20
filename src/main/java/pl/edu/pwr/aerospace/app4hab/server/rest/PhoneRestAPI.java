@@ -51,7 +51,7 @@ public class PhoneRestAPI {
         SensorStatusDao dao = new SensorStatusDao();
         dao.save(status);
 
-        return Response.status(200).build();
+        return Response.status(204).build();
     }
 
     @POST
@@ -67,7 +67,7 @@ public class PhoneRestAPI {
         ImageDao dao = new ImageDao();
         dao.save(image);
 
-        return Response.status(200).build();
+        return Response.status(204).build();
     }
 
     @GET

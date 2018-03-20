@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App4hab control server</title>
+
+    <script src="js/popper.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/app4hab.js"></script>
+    <script src="js/send.js"></script>
+
+    <script>
+        $(window).ready(function(){
+            initPage();
+            initSend();
+        });
+
+        window.setInterval(update, 1000);
+    </script>
+
+    <style>
+        pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+        .string { color: green; }
+        .number { color: darkorange; }
+        .boolean { color: blue; }
+        .null { color: magenta; }
+        .key { color: red; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="gui.html">App4HAB server</a>
+
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <span class="text-light">Last phone activity: </span>
+                <span class="text-light" id="LastActivityTime">00:00:00</span>
+                <span class="text-light">(</span>
+                <span class="text-light" id="LastActivityAgo">0s</span>
+                <span class="text-light">ago)</span>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h3>You are now in the secret, hidden page of App4HAB control server.</h3>
+        <h3>With great power comes great responsibility, thus to send commands you need to type security phrase.</h3>
+        <br/>
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Current commands</h5>
+                <pre id="CodeArea">
+                    Yo
+                </pre>
+            </div>
+
+            <div class="col-md-6">
+                <h5>New commands</h5>
+                <form id="commandsForm">
+
+                    <input id="logging" name="logging" type="checkbox">
+                    <label>Logging</label><br/>
+                    <input id="camera" name="camera" type="checkbox">
+                    <label>Camera</label><br/>
+                    <input id="radio" name="radio" type="checkbox">
+                    <label>Radio</label><br/>
+                    <input id="picture" name="picture" type="checkbox">
+                    <label>SendPicture</label><br/>
+
+
+
+                    <br/>
+                    <input type="password" name="secret"> Secret phrase<br/>
+                    <input type="submit">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

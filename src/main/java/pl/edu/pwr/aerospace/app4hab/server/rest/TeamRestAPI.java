@@ -1,6 +1,9 @@
 package pl.edu.pwr.aerospace.app4hab.server.rest;
 
+import javassist.tools.web.BadHttpRequest;
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.map.ObjectMapper;
+import pl.edu.pwr.aerospace.app4hab.server.CommandsRequestValidator;
 import pl.edu.pwr.aerospace.app4hab.server.daos.CommandsDao;
 import pl.edu.pwr.aerospace.app4hab.server.daos.ImageDao;
 import pl.edu.pwr.aerospace.app4hab.server.daos.PhoneActivityDao;
@@ -13,6 +16,7 @@ import pl.edu.pwr.aerospace.app4hab.server.entities.SensorStatus;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.IOException;
 import java.util.List;
 
 @Path("api/control")
@@ -25,14 +29,30 @@ public class TeamRestAPI {
 
     @POST
     @Path("/commands")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateCommands(Commands c) {
-        LOG.info("Incoming request for updating commands");
+    @Consumes(MediaType.TEXT_PLAIN)
+    public Response updateCommands(String s) throws BadHttpRequest {
+        LOG.info("Incoming request for updating commands with payload: " + s);
+
+        Commands commands = CommandsRequestValidator.parse(s);
+
+        if (commands == null)
+            return Response.status(400).build();
 
         CommandsDao dao = new CommandsDao();
-        dao.save(c);
+        dao.save(commands);
 
-        return Response.status(200).build();
+        return Response.status(204).build();
+    }
+
+    @GET
+    @Path("/lastcommands")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Commands getLastCommands() {
+        LOG.info("Incoming request for last activity");
+
+        CommandsDao dao = new CommandsDao();
+
+        return dao.getLatestCommands();
     }
 
     @GET
