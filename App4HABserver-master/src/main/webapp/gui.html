@@ -1,0 +1,88 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>App4hab control server</title>
+
+    <script src="js/popper.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/app4hab.js"></script>
+    
+    <script>
+        $(window).ready(initPage);
+
+        window.setInterval(update, 1000);
+    </script>
+    
+    <style>
+        pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+        .string { color: green; }
+        .number { color: darkorange; }
+        .boolean { color: blue; }
+        .null { color: magenta; }
+        .key { color: red; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="send.html">App4HAB server</a>
+        
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <span class="text-light">Last phone activity: </span>
+                <span class="text-light" id="LastActivityTime">00:00:00</span>
+                <span class="text-light">(</span>
+                <span class="text-light" id="LastActivityAgo">0s</span>
+                <span class="text-light">ago)</span>
+            </li>
+          </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-3 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <br/>
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="TabActivities" onclick="clickTabActivities()">Activities</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="TabSensors" onclick="clickTabSensors()">Sensors</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="TabPhotos" onclick="clickTabPhotos()">Photos</a>
+              </li>
+            </ul>
+              
+            <div class="table-responsive">
+              <table class="table" id="TabTable">
+                <thead>
+                </thead>
+                  
+                <tbody>  
+                </tbody>
+              </table>
+            </div>
+              
+          </div>
+        </nav>
+
+        <div class="col-md-8 ml-sm-auto col-lg-9 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Dashboard</h1>
+          </div>
+
+          <h4 id="SelectionHeadline">Nothing selected</h4>
+          <pre id="CodeArea">
+
+          </pre>
+        </div>
+      </div>
+    </div>
+  
+
+</body>
+</html>

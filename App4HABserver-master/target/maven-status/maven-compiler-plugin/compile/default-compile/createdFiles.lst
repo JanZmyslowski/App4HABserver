@@ -1,0 +1,16 @@
+pl\edu\pwr\aerospace\app4hab\server\daos\CommandsDao.class
+pl\edu\pwr\aerospace\app4hab\server\daos\ImageDao.class
+pl\edu\pwr\aerospace\app4hab\server\daos\PhoneActivityDao.class
+pl\edu\pwr\aerospace\app4hab\server\entities\Image.class
+pl\edu\pwr\aerospace\app4hab\server\daos\Db.class
+pl\edu\pwr\aerospace\app4hab\server\rest\PhoneRestAPI.class
+pl\edu\pwr\aerospace\app4hab\server\HibernateListener.class
+pl\edu\pwr\aerospace\app4hab\server\daos\Dao.class
+pl\edu\pwr\aerospace\app4hab\server\entities\Commands.class
+pl\edu\pwr\aerospace\app4hab\server\test\PostsenderImage.class
+pl\edu\pwr\aerospace\app4hab\server\test\PostsenderSensor.class
+pl\edu\pwr\aerospace\app4hab\server\entities\SensorStatus.class
+pl\edu\pwr\aerospace\app4hab\server\daos\SensorStatusDao.class
+pl\edu\pwr\aerospace\app4hab\server\rest\TeamRestAPI.class
+pl\edu\pwr\aerospace\app4hab\server\CommandsRequestValidator.class
+pl\edu\pwr\aerospace\app4hab\server\entities\PhoneActivity.class
